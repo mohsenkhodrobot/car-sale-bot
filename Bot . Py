@@ -1,0 +1,33 @@
+import requests
+from bs4 import BeautifulSoup
+import time
+
+# Telegram Bot Token and Chat ID
+TOKEN = 'your-telegram-bot-token'
+CHAT_ID = 'your-chat-id'
+
+# Function to send message to Telegram
+def send_telegram_message(message):
+    url = f'https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={message}'
+    requests.get(url)
+
+# Function to check for sales
+def check_sales():
+    # List of websites to check
+    urls = [
+        'https://www.iribnews.ir/fa/news/xyz',  # Replace with actual URLs
+        'https://www.example.com',  # Replace with actual URLs
+    ]
+    
+    for url in urls:
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # You need to adjust this part based on the specific structure of each website
+        if "فروش فوری" in soup.text:
+            send_telegram_message(f'فروش فوری در {url} پیدا شد!')
+
+# Main loop to check every 10 minutes
+while True:
+    check_sales()
+    time.sleep(600)  # Check every 10 minutes
