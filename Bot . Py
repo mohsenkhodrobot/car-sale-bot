@@ -3,8 +3,8 @@ from bs4 import BeautifulSoup
 import time
 
 # Telegram Bot Token and Chat ID
-TOKEN = 'your-telegram-bot-token'
-CHAT_ID = 'your-chat-id'
+TOKEN = '7795740043:AAFDDOp6Q_B_HS-TcyrHqdmPdtgSq_qwH8E'
+CHAT_ID = '81999753'
 
 # Function to send message to Telegram
 def send_telegram_message(message):
